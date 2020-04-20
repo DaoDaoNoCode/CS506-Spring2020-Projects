@@ -2,8 +2,6 @@ import folium
 
 from preprocess import PreProcess
 
-from utils import *
-
 from folium import FeatureGroup, LayerControl, Map, GeoJson, GeoJsonTooltip
 
 from folium.plugins import FeatureGroupSubGroup
@@ -34,11 +32,12 @@ class GIS:
         for i in range(len(data)):
             ward_info = data[i]
             ward_number = ward_info['ward']
-            feature_group = FeatureGroup(name='Ward' + ward_number, show=True)
+            feature_group = FeatureGroup(name='Ward ' + ward_number, control=True, show=True)
+            feature_group.add_to(geo_map)
             precincts = ward_info['data']
             for j in range(len(precincts)):
                 precinct = precincts[j]
-                sub_feature_group = FeatureGroupSubGroup(name='Precinct'+precinct['properties']['Precinct'], group=feature_group, control=True, show=True)
+                sub_feature_group = FeatureGroupSubGroup(name='Precinct '+precinct['properties']['Precinct'], group=feature_group, control=True, show=True)
                 geo_json = GeoJson(
                     data=precinct,
                     style_function=lambda feature: {
@@ -55,8 +54,7 @@ class GIS:
                     overlay=True
                 )
                 geo_json.add_to(sub_feature_group)
-                sub_feature_group.add_to(feature_group)
-            feature_group.add_to(geo_map)
+                sub_feature_group.add_to(geo_map)
         LayerControl().add_to(geo_map)
         geo_map.save('release/precincts_wards.html')
 

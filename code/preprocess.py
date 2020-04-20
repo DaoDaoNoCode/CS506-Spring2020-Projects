@@ -26,16 +26,12 @@ class PreProcess:
         return data
 
     def get_latest_data(self, data) -> list:
-        latest_data = []
-        for data_i in data:
-            if data_i['properties']['Map_Year'] == 2011:
-                latest_data.append(data_i)
-        return latest_data
+        return list(filter(lambda item: item['properties']['Map_Year'] == 2011, data))
 
     # group precincts by wards
     # return list[{ward: 1, data: [...]}, {ward: 2, data: [...]}...]
     def put_precincts_into_wards(self, data) -> list:
-        new_data=[]
+        new_data = []
         ward = {}
         for i in range(len(data)):
             data_i = data[i]
@@ -49,12 +45,10 @@ class PreProcess:
                     if data_i['properties']['Ward'] == data_j['ward']:
                         data_j['data'].append(data_i)
                         break
-        
+
+        for i in range(len(new_data)):
+            new_data[i]['data'].sort(key=lambda item: item['properties']['Precinct'])
+
         # sort by ward number
-        sorted_data = sorted(new_data, key=itemgetter('ward')) 
-        return sorted_data
-
-
-# if __name__ == '__main__':
-#     preprocess = PreProcess()
-#     data1 = preprocess.get_precincts_wards_geometry_data()
+        new_data.sort(key=itemgetter('ward'))
+        return new_data

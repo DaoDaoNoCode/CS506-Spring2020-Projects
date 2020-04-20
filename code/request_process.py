@@ -93,7 +93,7 @@ def draw_heatmap(requests):
         feature_group.add_to(a_map)
 
     LayerControl().add_to(a_map)
-    a_map.save("map.html")
+    a_map.save("release/map.html")
 
 
 if __name__ == '__main__':
