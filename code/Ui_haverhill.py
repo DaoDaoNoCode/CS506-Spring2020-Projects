@@ -65,7 +65,7 @@ class Ui_Form(object):
         self.toolButton_2.setMaximumSize(QtCore.QSize(20, 25))
         self.toolButton_2.setObjectName("toolButton_2")
         self.pushButton_2 = QtWidgets.QPushButton(Form)
-        self.pushButton_2.setGeometry(QtCore.QRect(230, 380, 120, 32))
+        self.pushButton_2.setGeometry(QtCore.QRect(230, 380, 100, 32))
         font = QtGui.QFont()
         font.setFamily("Times New Roman")
         font.setPointSize(14)
