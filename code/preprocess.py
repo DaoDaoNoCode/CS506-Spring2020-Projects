@@ -1,13 +1,12 @@
 import geopandas as gpd
 import json
 from operator import itemgetter
-from itertools import groupby
 
 
 class PreProcess:
     def __init__(self):
-        self.CDBG_file_path = 'resource/Hav_CDBG_Area_WGS84/Hav_CDBG_Area_WGS84.json'
-        self.precincts_wards_file_path = 'resource/Hav_Precincts_Wards_WGS84/Hav_Precincts_Wards_WGS84.json'
+        self.CDBG_file_path = 'resource/data/Hav_CDBG_Area_WGS84/Hav_CDBG_Area_WGS84.json'
+        self.precincts_wards_file_path = 'resource/data/Hav_Precincts_Wards_WGS84/Hav_Precincts_Wards_WGS84.json'
 
     def get_CDBG_geometry_data(self) -> dict:
         gdf = gpd.read_file(self.CDBG_file_path)
@@ -52,3 +51,22 @@ class PreProcess:
         # sort by ward number
         new_data.sort(key=itemgetter('ward'))
         return new_data
+
+    @staticmethod
+    def get_refuse_routes_data(refuse_routes_file_path) -> dict:
+        data = {}
+        gdf = gpd.read_file(refuse_routes_file_path)
+        gdf = gdf.to_crs(epsg='4326')
+        raw_data = json.loads(gdf.to_json())['features']
+        for each in raw_data:
+            if each['properties']['Name'] not in data:
+                data[each['properties']['Name']] = [each['geometry']]
+            else:
+                data[each['properties']['Name']].append(each['geometry'])
+
+        return data
+
+
+if __name__ == '__main__':
+    preprocess = PreProcess()
+    preprocess.get_refuse_routes_data()
