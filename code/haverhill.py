@@ -22,7 +22,7 @@ class Haverhill(QWidget, Ui_Form):
         palette.setColor(self.backgroundRole(), QColor('#FFFFFF'))
         self.setPalette(palette)
 
-        with open('./resource/style/blue.css', 'r', encoding='UTF-8') as f:
+        with open('resource/style/blue.css', 'r', encoding='UTF-8') as f:
             self.setStyleSheet(f.read())
         self.label.setPixmap(QPixmap('resource/img/haverhill.png'))
         self.label.setScaledContents(True)
@@ -95,7 +95,7 @@ class Haverhill(QWidget, Ui_Form):
     def on_pushButton_3_clicked(self):
         system_name = platform.system()
         if system_name == 'Windows':
-            os.system('start' + self.directory_path)
+            os.system('start ' + self.directory_path)
         else:
             os.system('open ' + self.directory_path)
 
