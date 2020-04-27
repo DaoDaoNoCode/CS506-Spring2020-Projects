@@ -111,7 +111,7 @@ class GIS:
             feature_group.add_to(geo_map)
         LayerControl().add_to(geo_map)
 
-        cur_time = time.strftime('%m-%Y-%d %H:%M:%S', time.localtime())
+        cur_time = time.strftime('%m-%Y-%d_%H:%M:%S', time.localtime())
         file_name = 'refuse_routes {}.html'.format(cur_time)
 
         geo_map.save(os.path.join(self.refuse_routes_directory_path, file_name))
@@ -145,7 +145,7 @@ class GIS:
         self.draw_heat_map(self.CDBG_map, request_final)
         self.draw_heat_map(self.precincts_wards_map, request_final)
 
-        cur_time = time.strftime('%m-%Y-%d %H:%M:%S', time.localtime())
+        cur_time = time.strftime('%m-%Y-%d_%H:%M:%S', time.localtime())
         cur_directory_path = os.path.join(self.directory_path, cur_time)
         if not os.path.exists(cur_directory_path):
             os.mkdir(cur_directory_path)
