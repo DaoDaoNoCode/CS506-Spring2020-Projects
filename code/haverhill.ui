@@ -63,7 +63,7 @@
      <x>75</x>
      <y>160</y>
      <width>180</width>
-     <height>16</height>
+     <height>24</height>
     </rect>
    </property>
    <property name="font">
@@ -73,7 +73,7 @@
     </font>
    </property>
    <property name="text">
-    <string>QAlert Request(.csv)</string>
+    <string>QAlert Requests(.csv)</string>
    </property>
   </widget>
   <widget class="QToolButton" name="toolButton">
@@ -120,7 +120,7 @@
      <x>75</x>
      <y>310</y>
      <width>180</width>
-     <height>16</height>
+     <height>24</height>
     </rect>
    </property>
    <property name="font">
@@ -130,7 +130,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Refues Routes(.json)</string>
+    <string>Refuse Routes(.json)</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_2">
