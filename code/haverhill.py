@@ -75,7 +75,7 @@ class Haverhill(QWidget, Ui_Form):
             self.pushButton_5.setEnabled(False)
             self.label_6.setText("Working...")
             # start a thread
-            refuse_routes_drawing = RefuseRoutesDrawing(self.gis, self.requests_file_path)
+            refuse_routes_drawing = RefuseRoutesDrawing(self.gis, self.refuse_routes_file_path)
             refuse_routes_drawing.signal.connect(self.handle_refuse_routes_drawing)
             refuse_routes_drawing.start()
             refuse_routes_drawing.exec()

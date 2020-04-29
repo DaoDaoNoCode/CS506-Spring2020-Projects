@@ -68,7 +68,6 @@ class GIS:
                                                                        '/Hav_Refuse_Routes_WGS84.json'):
         geo_map = Map(location=[42.795390191429625, -71.07516023514027], zoom_start=12)
         data = self.preprocess.get_refuse_routes_data(refuse_routes_file_path)
-
         keys_pool = [
             'MONDAY - Red Week',
             'TUESDAY - Red Week',

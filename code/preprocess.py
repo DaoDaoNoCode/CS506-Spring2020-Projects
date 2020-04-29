@@ -1,6 +1,7 @@
 import geopandas as gpd
-import json
 from operator import itemgetter
+import json
+from pyproj import _datadir, datadir
 
 
 class PreProcess:
@@ -68,5 +69,4 @@ class PreProcess:
 
 
 if __name__ == '__main__':
-    preprocess = PreProcess()
-    preprocess.get_refuse_routes_data()
+    PreProcess().get_refuse_routes_data("resource/data/Hav_Refuse_Routes_WGS84/Hav_Refuse_Routes_WGS84.json")
